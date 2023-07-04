@@ -8,24 +8,25 @@
 
 <body>
     <section class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <div class="container rounded" style="max-width: 800px;">
+        <div class="container rounded" style="max-width: 750px;">
             <div class="row">
-                <div class="bg-white mx-auto rounded p-3" style="min-height: 650px;">
+                <div class="bg-white mx-auto rounded p-3" style="min-height: 350px;">
                     <div class="row g-3">
                         <div class="col-md-6" id="left">
-                            <div class="m-2">
-
+                            <div class="m-3">
                                 <div class="head">
                                     <img src="../../../assets/img/g-img2.png" style="width: 70px" alt="google-logo">
-                                    <p class="fs-4 text-nowrap mt-2 fw-bolder">Yaşar, welcome to Google</p>
-                                    <i class="fa-solid fa-circle-user"></i>
-                                    <p class="fs-6">blablabla@gmail.com</p>
+                                    <p class="fs-4 text-nowrap mt-2 mb-3 fw-bolder">Yaşar, welcome to Google</p>
+                                    <div class="d-flex gap-2 mb-2 mt-4">
+                                        <fa-icon [icon]="faCircleUser"></fa-icon>
+                                        <p class="fs-6">blablabla@gmail.com</p>
+                                    </div>
                                 </div>
 
                                 <!-- FORM -->
                                 <form class="position-relative">
                                     <input type="tel" id="phone" name="" placeholder="Phone Number (optional)">
-                                    <p class="d-block mt-3 text-secondary text-nowrap" style="font-size: 0.8rem;">we'll use your number for account security. It wont be visible to others.</p>
+                                    <p class="d-block mt-2 pb-3 text-secondary text-nowrap ">we'll use your number for account security. It wont be visible to others.</p>
 
                                     <input type="email" name="" placeholder="Recovery email address (optional)">
                                     <span class="text-secondary">We'll use it to keep your account secure</span>
@@ -59,7 +60,7 @@
 
                                     <div class="d-flex justify-content-between align-items-center w-100">
                                         <a href="#">Sign in instead</a>
-                                        <input type="submit" id="next" value="next" class="bg-primary w-25 text-white rounded">
+                                        <input type="submit" id="next" value="next" class="bg-primary w-25 text-white rounded p-1 border border-primary">
                                     </div>
                                 </form>
                                 <!-- FORM END -->
@@ -69,7 +70,7 @@
                             <div class="m-3">
                                 <img src="https://ssl.gstatic.com/accounts/signup/glif/personal.svg"
                                     alt="google-svg-icon" class="m-5" style="width: 260px; height: 240px; position: relative; top: 5rem;">
-                                <p style="font-size: 1rem;" class="mx-5 mt-4">your personal info is private & safe</p>
+                                <p style="font-size: 1rem;" class="mx-5 mt-4 text-center">your personal info is private & safe</p>
                             </div>
                         </div>
                     </div>

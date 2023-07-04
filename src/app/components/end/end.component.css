@@ -1,0 +1,62 @@
+/* END PAGE */
+p{
+    word-spacing: .2rem;
+}
+.avatar{
+    display: block;
+    margin-top: 4rem;
+}
+
+.name{
+    position: absolute;
+    font-size: 3rem;
+    width: 50px;
+    justify-content: center;
+    display: flex;
+    line-height: 6.4rem;
+    margin-left: 1.5rem;
+}
+
+li{
+    list-style: none;
+    margin: 0 2rem;
+}
+
+fa-icon{
+    font-size: 2.5rem;
+    line-height: 4rem;
+    transition: .4s;
+    color: #000;
+    margin: 1.4rem 0;
+}
+li:nth-child(2) fa-icon{
+    color: blue;
+}
+li:nth-child(3) fa-icon{
+    color: #d6249f;
+}
+li:nth-child(n+2) fa-icon:hover{
+    color: #ffff;
+}
+
+li:nth-child(2) a:hover{
+    background-color: #0A66C2; 
+}
+
+li:nth-child(3) a:hover{
+background-color: #E4405F; 
+}
+li > a{
+    position: relative;
+    display: block;
+    width: 80px;
+    height: 70px;
+    border-radius: .9rem;
+    background-color: #ffff;
+    text-align: center;
+    transition: .4s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+a:hover{
+    transform: translate(0, -10px);
+}

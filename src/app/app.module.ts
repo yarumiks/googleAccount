@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { EndComponent } from './components/end/end.component';
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -16,9 +18,12 @@ import { EndComponent } from './components/end/end.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
