@@ -17,28 +17,33 @@
                                 <img src="../assets/img/g-img2.png" style="width: 70px" alt="google-logo">
                                 <p class="fs-5 text-nowrap m-2 fw-bolder">Create your Google Account</p>
                                     <!-- FORM -->
-                                <form class="position-relative">
-                                    <input type="text" name="" placeholder="First name" required>
-                                    <input type="text" name="" placeholder="Last name" required>
-                                    <div id="email" class="position-relative">
-                                        <input type="email" name="" placeholder="Username" required>
-                                        <label class="position-absolute end-0 m-2 p-1">@gmail.com</label>
-                                    </div>
-                                    <span>You can use letters, numbers & periods</span>
-                                    <br>
-                                    <a href="#">Use my current email address instead</a>
-                                    <input type="password" name="" placeholder="Password" required id="pasw">
-                                    <input type="password" name="" placeholder="Confirm" required id="conf">
-                                    <span class="desc" style="font-size: 0.8rem; margin-bottom: 0.35rem; width: fit-content; display: block;">Use 8 or more characters with a mix of letters,numbers & symbols</span>
-                                    <input type="checkbox" name="" class="checkbox" (click)="showPassword()"> 
-                                    &nbsp; Show password
-
-
-                                    <div class=" d-flex justify-content-between align-items-center w-100">
-                                        <a href="#">Sign in instead</a>
-                                        <input type="submit" id="next" value="next" class="bg-primary">
+                                <form [formGroup]="formHome" class="position-relative">
+                                    <div formGroupName="userInfo">
+                                        <input type="text" placeholder="First name" formControlName="name">
+                                        <input type="text" placeholder="Last name" formControlName="surname">
+                                        <div id="email" class="position-relative">
+                                            <input type="email" placeholder="email" formControlName="email">
+                                            <label class="position-absolute end-0 m-2 p-1">@gmail.com</label>
+                                        </div>
+                                        <span>You can use letters, numbers & periods</span>
+                                        <br>
+                                        <a href="#">Use my current email address instead</a>
+                                        <input type="password" name="" placeholder="Password" id="pasw" formControlName="password">
+                                        <input type="password" name="" placeholder="Confirm" id="conf">
+                                        <span class="desc" style="font-size: 0.8rem; margin-bottom: 0.35rem; width: fit-content; display: block;">Use 8
+                                            or more characters with a mix of letters,numbers & symbols</span>
+                                        <input type="checkbox" name="" class="checkbox" (click)="showPassword()">
+                                        &nbsp; Show password
+                                
+                                
+                                        <div class=" d-flex justify-content-between align-items-center w-100">
+                                            <a href="#">Sign in instead</a>
+                                            <input type="submit" id="next" routerLink="/detail" (click)="ngSubmit()" class="bg-primary">
+                                        </div>
                                     </div>
                                 </form>
+
+                                <div>{{formHome.value | json}}</div>
                                 <!-- FORM END -->
                             </div>
                         </div>

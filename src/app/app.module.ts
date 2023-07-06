@@ -7,19 +7,20 @@ import { DetailComponent } from './components/detail/detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { EndComponent } from './components/end/end.component';
 import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailComponent,
     HomeComponent,
-    EndComponent
+    EndComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

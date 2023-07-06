@@ -24,44 +24,34 @@
                                 </div>
 
                                 <!-- FORM -->
-                                <form class="position-relative">
-                                    <input type="tel" id="phone" name="" placeholder="Phone Number (optional)">
-                                    <p class="d-block mt-2 pb-3 text-secondary text-nowrap ">we'll use your number for account security. It wont be visible to others.</p>
-
-                                    <input type="email" name="" placeholder="Recovery email address (optional)">
-                                    <span class="text-secondary">We'll use it to keep your account secure</span>
-
+                                <form class="position-relative" [formGroup]="detailForm">
+                                    <div formGroupName="detail">
+                                        <input type="tel" id="phone" placeholder="Phone Number (optional)" formControlName="tel">
+                                        <p class="d-block mt-2 pb-3 text-secondary text-nowrap ">we'll use your number for account security. It wont be visible to others.</p>
+                                        
+                                        <input type="email" placeholder="Recovery email address (optional)">
+                                        <span class="text-secondary">We'll use it to keep your account secure</span>
+                                        
                                     <!-- DATE -->
                                     <select name="month" id="month">
-                                        <option value="mont">January</option>
-                                        <option value="mont">February</option>
-                                        <option value="March">March</option>
-                                        <option value="April">April</option>
-                                        <option value="May">May</option>
-                                        <option value="June">June</option>
-                                        <option value="July">July</option>
-                                        <option value="August">August</option>
-                                        <option value="September">September</option>
-                                        <option value="October">October</option>
-                                        <option value="November">November</option>
-                                        <option value="December">December</option>
+                                        <option *ngFor="let m of month" value="m.id">{{m.month}}</option>
+                                        
                                     </select>
                                     
                                     <input type="text" name="" placeholder="Day">
                                     <input type="text" name="" placeholder="Year">
                                     <span>Your birthday</span>
                                     <!-- DATE END -->
-
+                                    
                                     <select name="gender" id="gender" class="mt-auto">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="rather">Rather not say</option>
+                                        <option *ngFor="let gender of gender" >{{gender.gender}}</option>
                                     </select>
-
+                                    
                                     <div class="d-flex justify-content-between align-items-center w-100">
                                         <a href="#">Sign in instead</a>
-                                        <input type="submit" id="next" value="next" class="bg-primary w-25 text-white rounded p-1 border border-primary">
+                                        <input type="submit" id="next" value="next" (click)="fullForm()" routerLink="/end" class="bg-primary w-25 text-white rounded p-1 border border-primary">
                                     </div>
+                                </div>
                                 </form>
                                 <!-- FORM END -->
                             </div>
