@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import {faGithub, faInstagram, faLinkedin} from '@fortawesome/free-brands-svg-icons'
+import { DetailComponent } from '../detail/detail.component';
+import { UserModel } from 'src/app/services/user-model';
 
 @Component({
   selector: 'app-end',
@@ -10,4 +12,26 @@ export class EndComponent {
 faGithub = faGithub;
 faLinkedin = faLinkedin;
 faInstagram = faInstagram;
+name: string;
+surname: string;
+
+constructor(private renderer2: Renderer2, private elem: ElementRef){}
+
+
+ngOnInit(){
+ const getDb = JSON.parse(localStorage.getItem("user"));
+ this.name = getDb[getDb.length - 1].name;
+ this.surname = getDb[getDb.length - 1].surname;
+}
+
+ngAfterViewInit(){
+  const avatar = <HTMLElement>document.querySelector('.avatar');
+  const div_name = <HTMLElement>avatar.querySelector('.name');
+  const name = avatar.parentElement.querySelector('h3').innerText;
+   // getting first letter
+   div_name.innerText = name.charAt(9);
+   // background color
+   const color_code = Math.floor(Math.random()*16765217).toString(16);
+   avatar.style.backgroundColor = "#" + color_code;
+}
 }

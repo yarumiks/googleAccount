@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injectable, Input, Output, ViewChild } from '@angular/core';
 import * as intlTelInput from 'intl-tel-input';
 import {faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import { GenderI, MonthI } from './selectI';
@@ -6,6 +6,10 @@ import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
 import { HomeComponent } from '../home/home.component';
 import { UserModel } from 'src/app/services/user-model';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-detail',
