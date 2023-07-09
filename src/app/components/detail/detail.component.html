@@ -33,23 +33,22 @@
                                         <span class="text-secondary">We'll use it to keep your account secure</span>
                                         
                                     <!-- DATE -->
-                                    <select name="month" id="month">
-                                        <option *ngFor="let m of month" value="m.id">{{m.month}}</option>
-                                        
+                                    <select name="month" id="month" (change)="selectMonth($event)">
+                                        <option *ngFor="let m of month">{{m.month}}</option>
                                     </select>
                                     
-                                    <input type="text" name="" placeholder="Day">
-                                    <input type="text" name="" placeholder="Year">
+                                    <input type="text" placeholder="Day" formControlName="day">
+                                    <input type="text" placeholder="Year" formControlName="year">
                                     <span>Your birthday</span>
                                     <!-- DATE END -->
                                     
-                                    <select name="gender" id="gender" class="mt-auto">
-                                        <option *ngFor="let gender of gender" >{{gender.gender}}</option>
+                                    <select name="gender" (change)="selectGender($event)" id="gender" class="mt-auto">
+                                        <option *ngFor="let g of gender" >{{g.gender}}</option>
                                     </select>
                                     
                                     <div class="d-flex justify-content-between align-items-center w-100">
                                         <a href="#">Sign in instead</a>
-                                        <input type="submit" id="next" value="next" (click)="fullForm()" routerLink="/end" class="bg-primary w-25 text-white rounded p-1 border border-primary">
+                                        <input type="submit" id="next" value="next"  (click)="addDetail()" routerLink="/end" class="bg-primary w-25 text-white rounded p-1 border border-primary">
                                     </div>
                                 </div>
                                 </form>

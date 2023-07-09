@@ -1,5 +1,4 @@
 export interface MonthI{
-    id: number;
     month: string;
 }
 

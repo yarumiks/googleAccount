@@ -1,41 +1,49 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as intlTelInput from 'intl-tel-input';
 import {faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import { GenderI, MonthI } from './selectI';
 import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
+import { HomeComponent } from '../home/home.component';
+import { UserModel } from 'src/app/services/user-model';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent {
+export class DetailComponent{
+  
   faCircleUser = faCircleUser;
   month: MonthI[];
   gender: GenderI[];
   detailForm: FormGroup<any>;
+  dataArr = JSON.parse(localStorage.getItem('user')) || [];
+  userModel: UserModel;
+  selectedGender: string;
+  selectedMonth: string;
 
-  constructor(private formService: FormService){
+
+  constructor(private formService: FormService, public home: HomeComponent){
     this.detailForm = this.formService.shareForm();
+    this.dataArr = home.dataArr;
+    this.userModel = home.userModel;
   }
 
   ngOnInit(){
-
-
 this.month = [
-  {id:1,month:"January"},
-  {id:2,month:"February"},
-  {id:3,month:"March"},
-  {id:4,month:"April"},
-  {id:5,month:"May"},
-  {id:6,month:"June"},
-  {id:7,month:"July"},
-  {id:8,month:"August"},
-  {id:9,month:"September"},
-  {id:10,month:"October"},
-  {id:11,month:"November"},
-  {id:12,month:"December"},
+  {month:"January"},
+  {month:"February"},
+  {month:"March"},
+  {month:"April"},
+  {month:"May"},
+  {month:"June"},
+  {month:"July"},
+  {month:"August"},
+  {month:"September"},
+  {month:"October"},
+  {month:"November"},
+  {month:"December"},
 ]
 
 
@@ -54,9 +62,33 @@ const phone = document.getElementById('phone');
   separateDialCode:true,
   utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.0/js/utils.js'
  });
+
+}
+// accessing values ​​in dropdowns
+selectGender(e){
+  this.selectedGender = e.target.value;
+  console.log(this.selectedGender);
 }
 
-fullForm() {
-  console.log(this.detailForm.value);
-  }
+selectMonth(e){
+  this.selectedMonth = e.target.value;
+  console.log(this.selectedMonth);
+}
+
+
+// populates the data on the detail page
+addDetail(){
+  const gender = this.userModel.gender = this.selectedGender;
+  const day = this.detailForm.get('detail').value.day;
+  const year = this.detailForm.get('detail').value.year;
+  const format = `${day}/${this.selectedMonth}/${year}`;
+  
+  const phone = this.userModel.tel = this.detailForm.get('detail').value.tel;
+  const birthday = this.userModel.birthday = format;
+  // add to array
+ this.dataArr[this.dataArr.length - 1]['tel'] = phone;
+ this.dataArr[this.dataArr.length - 1]['gender'] = gender;
+ this.dataArr[this.dataArr.length - 1]['birthday'] = birthday;
+localStorage.setItem("user", JSON.stringify(this.dataArr))
+}
 }

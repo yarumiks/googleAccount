@@ -1,11 +1,13 @@
 import { Injectable, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class FormService {
+ 
   constructor(private fb: FormBuilder) {}
     
     shareForm(): FormGroup {
@@ -18,9 +20,12 @@ export class FormService {
         }),
         detail: this.fb.group({
           tel: [""],
+          day: [""],
+          year: [""]
         })
       });
       return userForm    
     }
+
 }
 

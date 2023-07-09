@@ -1,7 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Injectable} from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective } from '@angular/forms';
 import { FormService} from 'src/app/services/form.service';
+import { UserModel } from 'src/app/services/user-model';
 
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-home',
@@ -11,14 +16,14 @@ import { FormService} from 'src/app/services/form.service';
 })
 export class HomeComponent {
   formHome: FormGroup<any>;
+  userModel: UserModel = new UserModel();
+  userForm: any;
+  dataArr = JSON.parse(localStorage.getItem('user')) || [];
+
   constructor(private formService: FormService){
     this.formHome = this.formService.shareForm();
   }
-
-   ngSubmit(){
-    console.log(this.formHome.value);
-   }
-
+  //show & hide password
   showPassword = () =>{
    const password = <HTMLInputElement>document.getElementById("pasw");
    const confirm = <HTMLInputElement>document.getElementById("conf");
@@ -30,6 +35,19 @@ export class HomeComponent {
           confirm.type= "password";
       }
   }  
+
+  saveData() {
+    // Populate the object in user-model.ts
+      this.userModel.name = this.formHome.get('userInfo').value.name;
+      this.userModel.surname = this.formHome.get('userInfo').value.surname;
+      this.userModel.email = this.formHome.get('userInfo').value.email;
+      this.userModel.password = this.formHome.get('userInfo').value.password;
+     
+
+    this.dataArr.push(this.userModel)
+    localStorage.setItem("user", JSON.stringify(this.dataArr))
+  }
+
   }
 
 
