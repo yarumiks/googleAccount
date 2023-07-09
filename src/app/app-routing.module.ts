@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailComponent } from './components/detail/detail.component';
 import { HomeComponent } from './components/home/home.component';
+import { DetailComponent } from './components/detail/detail.component';
 import { EndComponent } from './components/end/end.component';
 
+
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "detail", component: DetailComponent},
-  {path: "end", component: EndComponent}
+  {path: "", component: HomeComponent },
+  {path: "2", loadChildren: () => import("../app/components/lazy/lazy.module").then(m => m.LazyModule)},
+  {path: "3", loadChildren: () => import("../app/components/lazy/lazy.module").then(m => m.LazyModule)},
 ];
 
 @NgModule({
