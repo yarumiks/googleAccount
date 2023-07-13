@@ -17,12 +17,13 @@ import { UserModel } from 'src/app/services/user-model';
 export class HomeComponent {
   formHome: FormGroup<any>;
   userModel: UserModel = new UserModel();
-  userForm: any;
   dataArr = JSON.parse(localStorage.getItem('user')) || [];
 
   constructor(private formService: FormService){
     this.formHome = this.formService.shareForm();
   }
+
+ 
   //show & hide password
   showPassword = () =>{
    const password = <HTMLInputElement>document.getElementById("pasw");
@@ -43,11 +44,29 @@ export class HomeComponent {
       this.userModel.email = this.formHome.get('userInfo').value.email;
       this.userModel.password = this.formHome.get('userInfo').value.password;
      
-
     this.dataArr.push(this.userModel)
     localStorage.setItem("user", JSON.stringify(this.dataArr))
   }
 
+  get name(){
+    return this.formHome.get('userInfo').get('name');
+  }
+
+  get surname(){
+    return this.formHome.get('userInfo').get('surname');
+  }
+
+  get email(){
+    return this.formHome.get('userInfo').get('email');
+  }
+
+  get password(){
+    return this.formHome.get('userInfo').get('password');
+  }
+
+  get confirm(){
+    return this.formHome.get('userInfo').get('confirm');
+  }
   }
 
 

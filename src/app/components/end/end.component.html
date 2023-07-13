@@ -8,21 +8,18 @@
 <body>
     <!-- Css hallet -->
     <section class="d-flex flex-column min-vh-100 align-items-center">
-        <div class="profile min-vh-100 position-relative" style="max-width: 1026px; width: 100%;">
-            
+        <div class="profile min-vh-100 position-relative me-4" style="max-width: 1020px; width: 100%;">
             <div #avatar class="avatar mx-auto"
                 style="width: 100px; height: 100px; border-radius: 50%; margin-left: 1.7rem;">
                 <div class="name"></div>
             </div>
-            
             <div class="content mt-1">
-                <h3 class="text-center py-2 fw-bolder">Welcome, {{name}} {{surname}}</h3>
+                <h3 class="text-center py-2 fw-bolder">Welcome, {{name | titlecase}} {{surname | titlecase}}</h3>
                 <p class="text-center fst-italic ">manage your info, privacy, and security to make google work better for you</p>
 
             </div>
-            
             <div class="link">
-                <ul class="d-flex position-absolute top-50 mt-5 start-50 translate-middle ">
+                <ul class="d-flex position-absolute top-50 mt-4 pe-4 start-50 translate-middle ">
                     <li><a href="https://github.com/yarumiks" target="_blank"><fa-icon [icon]="faGithub"></fa-icon></a></li>
                     <li><a href="https://www.linkedin.com/in/ya%C5%9Far-kur%C5%9Fun-095879235" target="_blank"><fa-icon [icon]="faLinkedin"></fa-icon></a></li>
                     <li><a href="https://instagram.com/krsn_yasar?" target="_blank"><fa-icon [icon]="faInstagram"></fa-icon></a></li>

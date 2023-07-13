@@ -6,7 +6,6 @@
     <title>layout</title>
 </head>
 <body>
-
     <section class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="container rounded"  style="max-width: 750px;">
             <div class="row">
@@ -18,6 +17,26 @@
                                 <p class="fs-5 text-nowrap m-2 fw-bolder">Create your Google Account</p>
                                     <!-- FORM -->
                                 <form [formGroup]="formHome" class="position-relative">
+                                    <span id="error" *ngIf="!name.valid && (name.dirty || name.touched)">
+                                        <p *ngIf="name.errors?.['required']">have to fill in the name</p>
+                                        <p *ngIf="name.errors?.['minlength']">name must be at least 3 characters</p>
+                                    </span>
+                                    <span id="error" *ngIf="!surname.valid && (surname.dirty || surname.touched)">
+                                        <p *ngIf="surname.errors?.['required']">have to fill in the surname</p>
+                                        <p *ngIf="surname.errors?.['minlength']">name must be at least 2 characters</p>
+                                    </span>
+
+                                    <span id="error" *ngIf="!email.valid && (email.dirty || email.touched)">
+                                        <p *ngIf="email.errors?.['required']">have to fill in the email</p>
+                                        <p *ngIf="email.errors?.['email']">Invalid Email Format</p>
+                                    </span>
+
+                                    <span id="error" *ngIf="!password.valid && (password.dirty || password.touched)">
+                                        <p *ngIf="password.errors?.['required']">have to fill in the password</p>
+                                        <p *ngIf="password.errors?.['minlength']">name must be at least 8 characters</p>
+                                    </span>
+
+                                        
                                     <div formGroupName="userInfo">
                                         <input type="text" placeholder="First name" formControlName="name">
                                         <input type="text" placeholder="Last name" formControlName="surname">
@@ -28,8 +47,9 @@
                                         <span>You can use letters, numbers & periods</span>
                                         <br>
                                         <a href="#">Use my current email address instead</a>
-                                        <input type="password" name="" placeholder="Password" id="pasw" formControlName="password">
-                                        <input type="password" name="" placeholder="Confirm" id="conf">
+                                        <input type="password" placeholder="Password" id="pasw" formControlName="password" >
+                                        <input type="password" placeholder="Confirm" id="conf" formControlName="confirm">
+                                        <p *ngIf="formHome.errors?.['passwordequelerror']">confirm is not the same as password</p>
                                         <span class="desc" style="font-size: 0.8rem; margin-bottom: 0.35rem; width: fit-content; display: block;">Use 8
                                             or more characters with a mix of letters,numbers & symbols</span>
                                         <input type="checkbox" name="" class="checkbox" (click)="showPassword()">
@@ -38,7 +58,7 @@
                                 
                                         <div class=" d-flex justify-content-between align-items-center w-100">
                                             <a href="#">Sign in instead</a>
-                                            <input type="submit" id="next" routerLink="/2/detail" (click)="saveData()"  class="bg-primary">
+                                            <input type="submit" id="next"  routerLink="/2/detail" [disabled]="!formHome.valid" (click)="saveData()"  class="bg-primary">
                                         </div>
                                     </div>
                                 </form>

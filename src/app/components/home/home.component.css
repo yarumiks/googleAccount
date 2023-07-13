@@ -106,4 +106,13 @@ form input:focus{
     }
 }
 
+#error{
+    color: red;
+}
 
+form input.ng-touched{
+    border: 1px solid red;
+}
+form input.ng-dirty.ng-valid{
+    border: 1px solid green;
+}

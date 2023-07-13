@@ -1,5 +1,9 @@
 import { Injectable, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from "@angular/forms";
+import { equalPassword } from './equalpassword.validator';
+
+
+
 
 
 @Injectable({
@@ -13,10 +17,13 @@ export class FormService {
     shareForm(): FormGroup {
       const userForm = this.fb.group({
         userInfo: this.fb.group({
-          name: [""],
-          surname: [""],
-          email: [""],
-          password: [""]
+          name: ['', [Validators.required, Validators.minLength(3),]],
+          surname: ['', [Validators.required, Validators.minLength(2)]],
+          email: ['',[Validators.required, Validators.email]],
+          password: ['', [Validators.required,Validators.minLength(7)]],
+          confirm: ['']
+        },{
+          Validators: equalPassword
         }),
         detail: this.fb.group({
           tel: [""],
