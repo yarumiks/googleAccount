@@ -1,7 +1,6 @@
 import { Component, ElementRef, Injectable, Input, Output, ViewChild } from '@angular/core';
 import * as intlTelInput from 'intl-tel-input';
 import {faCircleUser} from '@fortawesome/free-solid-svg-icons'
-import { GenderI, MonthI } from './selectI';
 import { FormGroup } from '@angular/forms';
 import { FormService } from 'src/app/services/form.service';
 import { HomeComponent } from '../home/home.component';
@@ -26,7 +25,6 @@ export class DetailComponent{
   userModel: UserModel;
   selectedGender: string;
   selectedMonth: string;
-
 
   constructor(private formService: FormService, public home: HomeComponent){
     this.detailForm = this.formService.shareForm();
@@ -71,12 +69,10 @@ const phone = document.getElementById('phone');
 // accessing values ​​in dropdowns
 selectGender(e){
   this.selectedGender = e.target.value;
-  console.log(this.selectedGender);
 }
 
 selectMonth(e){
   this.selectedMonth = e.target.value;
-  console.log(this.selectedMonth);
 }
 
 
@@ -90,9 +86,17 @@ addDetail(){
   const phone = this.userModel.tel = this.detailForm.get('detail').value.tel;
   const birthday = this.userModel.birthday = format;
   // add to array
- this.dataArr[this.dataArr.length - 1]['tel'] = phone;
- this.dataArr[this.dataArr.length - 1]['gender'] = gender;
- this.dataArr[this.dataArr.length - 1]['birthday'] = birthday;
+ this.dataArr['tel'] = phone;
+ this.dataArr['gender'] = gender;
+ this.dataArr['birthday'] = birthday;
 localStorage.setItem("user", JSON.stringify(this.dataArr))
 }
+}
+
+interface MonthI{
+  month: string;
+}
+
+ interface GenderI{
+  gender: string
 }

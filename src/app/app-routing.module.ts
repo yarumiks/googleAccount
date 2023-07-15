@@ -11,7 +11,7 @@ import { canActivateGuard } from './services/auth.guards';
 const routes: Routes = [
   {path: "", component: HomeComponent,},
   {path: "2", loadChildren: () => import("../app/components/lazy/lazy.module").then(m => m.LazyModule), canActivate: [canActivateGuard]},
-  {path: "3", loadChildren: () => import("../app/components/lazy/lazy.module").then(m => m.LazyModule)},
+  {path: "3", loadChildren: () => import("../app/components/lazy/lazy.module").then(m => m.LazyModule), canActivate: [canActivateGuard]},
 ];
 
 @NgModule({
