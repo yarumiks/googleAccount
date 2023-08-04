@@ -37,6 +37,9 @@ export class HomeComponent {
       }
   }  
 
+  //purpose form in the forms in the service taking the data (formHome and detailForm) 
+  //then importing them to userModel and storing the collected data in localstorage.
+  
   saveData() {
     // Populate the object in user-model.ts
       this.userModel.name = this.formHome.get('userInfo').value.name;

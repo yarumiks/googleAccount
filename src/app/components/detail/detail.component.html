@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>detail</title>
-</head>
-
-<body>
     <section class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="container rounded" style="max-width: 750px;">
             <div class="row">
@@ -16,10 +7,10 @@
                             <div class="m-3">
                                 <div class="head">
                                     <img src="../../../assets/img/g-img2.png" style="width: 70px" alt="google-logo">
-                                    <p class="fs-4 text-nowrap mt-2 mb-3 fw-bolder">Yaşar, welcome to Google</p>
+                                    <p class="fs-4 text-nowrap mt-2 mb-3 fw-bolder">{{viewName}}, welcome to Google</p>
                                     <div class="d-flex gap-2 mb-2 mt-4">
                                         <fa-icon [icon]="faCircleUser"></fa-icon>
-                                        <p class="fs-6">blablabla@gmail.com</p>
+                                        <p class="fs-6">{{viewEmail}}</p>
                                     </div>
                                 </div>
 
@@ -67,5 +58,3 @@
             </div>
         </div>
     </section>
-</body>
-</html>

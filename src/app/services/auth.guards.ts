@@ -7,7 +7,7 @@ export const canActivateGuard: CanActivateFn = (route: ActivatedRouteSnapshot, s
     const getStorage = !!localStorage.getItem('user');
     const router = inject(Router)
     if (!getStorage) {
-        alert('You are not login')
+        alert('Are you sure you want to exit the application?')
         router.navigate([''])
         return false
     }

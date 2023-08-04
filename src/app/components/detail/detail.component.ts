@@ -16,15 +16,18 @@ import { UserModel } from 'src/app/services/user-model';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent{
-  
   faCircleUser = faCircleUser;
+
   month: MonthI[];
   gender: GenderI[];
   detailForm: FormGroup<any>;
   dataArr = JSON.parse(localStorage.getItem('user')) || [];
   userModel: UserModel;
+
   selectedGender: string;
   selectedMonth: string;
+  viewName: string;
+  viewEmail: string;
 
   constructor(private formService: FormService, public home: HomeComponent){
     this.detailForm = this.formService.shareForm();
@@ -54,9 +57,6 @@ this.gender = [
   {gender: "Female"},
   {gender: "Rather not say"},
 ]
-
-
-
   //phone number code 
 const phone = document.getElementById('phone');
  intlTelInput(phone, {
@@ -65,7 +65,10 @@ const phone = document.getElementById('phone');
   utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.0/js/utils.js'
  });
 
+this.viewName = this.dataArr[this.dataArr.length - 1]['name'];
+this.viewEmail = this.dataArr[this.dataArr.length - 1]['email'];
 }
+
 // accessing values ​​in dropdowns
 selectGender(e){
   this.selectedGender = e.target.value;
@@ -86,9 +89,10 @@ addDetail(){
   const phone = this.userModel.tel = this.detailForm.get('detail').value.tel;
   const birthday = this.userModel.birthday = format;
   // add to array
- this.dataArr['tel'] = phone;
- this.dataArr['gender'] = gender;
- this.dataArr['birthday'] = birthday;
+ this.dataArr[this.dataArr.length - 1]['tel'] = phone;
+ this.dataArr[this.dataArr.length - 1]['gender'] = gender;
+ this.dataArr[this.dataArr.length - 1]['birthday'] = birthday;
+//update the array
 localStorage.setItem("user", JSON.stringify(this.dataArr))
 }
 }

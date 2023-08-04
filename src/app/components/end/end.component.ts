@@ -17,12 +17,15 @@ name: string;
 surname: string;
 
 constructor(private router: Router){}
+
 ngOnInit(){
+  //pull data of last registered user
  const getDb = JSON.parse(localStorage.getItem("user"));
  this.name = getDb[getDb.length - 1].name;
  this.surname = getDb[getDb.length - 1].surname;
 }
 
+// personal avatar configuration
 ngAfterViewInit(){
   const avatar = <HTMLElement>document.querySelector('.avatar');
   const div_name = <HTMLElement>avatar.querySelector('.name');
